@@ -8,3 +8,12 @@ class Produto:
     def __str__(self):
         return self.nome + self.preco + self.quantidade
 
+class Entrada:
+    def __init__(self):
+        return
+class Saida:
+    def __init__(self):
+        return
+
+
+
