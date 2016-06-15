@@ -12,9 +12,15 @@ class ProdutoController:
         self.produtos.append(Produto(nome, preco, quantidade))
 
     def listprodutos(self):
-        sRet = ""
+        produtos = ()
         for produto in self.produtos:
-            sRet = sRet + "\n" + produto.__str__()
+            produtos.add(produto.__str__())
+        return produtos
+
+    def toProdutos(self):
+        self.view.tkraise()
+
+
 
     def getproduto(self, nome):
         for produto in self.produtos:
