@@ -5,7 +5,7 @@ class Produto:
         self.quantidade = quantidade
 
     def __str__(self):
-        return self.nome + self.preco + self.quantidade
+        return self.nome + " " + str(self.preco)  + " " +  str(self.quantidade)
 
 class Entrada:
     def __init__(self):
