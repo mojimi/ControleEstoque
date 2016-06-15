@@ -50,8 +50,8 @@ pc.newproduto("maça", 3, 3)
 pc.newproduto("pera", 2, 5)
 pc.newproduto("chocolate", 5, 8)
 
-print(len(pc.filterPrecosMaioresX(3))) #1,3
-print(pc.filterPrecosMaioresX(3))
-print(len(pc.filterQuantidadeMenoresX(4))) #0,1
-print(pc.filterQuantidadeMenoresX(4))
+# print(len(pc.filterPrecosMaioresX(3))) #1,3
+# print(pc.filterPrecosMaioresX(3))
+# print(len(pc.filterQuantidadesMenoresX(4))) #0,1
+# print(pc.filterQuantidadesMenoresX(4))
 
