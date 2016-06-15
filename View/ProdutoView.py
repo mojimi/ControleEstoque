@@ -6,7 +6,6 @@ class ProdutoView(tk.Frame):
         self.pack()
         self.createWidgets()
         self.ct = controller
-        self.mainloop()
 
 
     def createWidgets(self):
@@ -16,8 +15,12 @@ class ProdutoView(tk.Frame):
         self.hi_there["command"] = self.listProdutos
         self.hi_there.pack(side="top")
 
+        self.lists = tk.PanedWindow(self)
+
+
     def say_hi(self):
         print("hi there, everyone!")
 
     def listProdutos(self):
-        self.ct.listprodutos
+        lista = self.ct.listprodutos
+

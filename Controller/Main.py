@@ -1,10 +1,16 @@
 from Controller.ProdutoController import ProdutoController
+from View.MainView import start
 
 class Main:
     def __start__(self):
-        self.produtoController = ProdutoController()
 
+        self.ctProduto = ProdutoController()
 
+        self.viewMain = start(self)
+
+    def toProdutos(self):
+
+        self.ctProduto.toProdutos()
 
 
 
