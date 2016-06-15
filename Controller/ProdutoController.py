@@ -4,12 +4,12 @@ from View.ProdutoView import ProdutoView
 
 class ProdutoController:
     def __init__(self):
-        self.produtos = {}
+        self.produtos = []
         self.view = ProdutoView(controller=self)
 
 
     def newproduto(self, nome, preco, quantidade):
-        self.produtos.add(Produto(nome, preco, quantidade))
+        self.produtos.append(Produto(nome, preco, quantidade))
 
     def listprodutos(self):
         sRet = ""
@@ -20,3 +20,4 @@ class ProdutoController:
         for produto in self.produtos:
             if produto.nome == nome:
                 return produto
+
