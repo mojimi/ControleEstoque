@@ -1,16 +1,20 @@
 import pickle
 class DataStorage:
-    file_Name = "dataBase.txt"
 
     def __init__(self):
         self.file_Name = "dataBase.txt"
 
-    def storageData(self, data):
-        fileObject = open(self.file_Name, 'wb')
-        pickle.dump(data,fileObject)
-        fileObject.close()
+    def save(self, data):
+        try:
+            with open(self.file_Name, "wb") as myData:
+                pickle.dump(data,myData)
+                myData.close()
+        except pickle.PickleError as err:
+            print(str(err))
 
-    def readData(self):
-        fileObject = open(self.file_Name,'r')
-        pickle.load(fileObject)
-        fileObject.close()
+    def load(self):
+        try:
+            with open(self.file_Name,'rb') as myData:
+                return pickle.load(myData)
+        except pickle.PickleError as err:
+            print(str(err))
