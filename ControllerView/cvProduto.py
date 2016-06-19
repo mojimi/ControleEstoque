@@ -8,22 +8,22 @@ class ProdutoController:
 
         self.produtos = []
 
-        self.newproduto("banana", 50, 50)
-        self.newproduto("ovo", 50, 50)
+        self.addProduto("banana", 50, 50)
+        self.addProduto("ovo", 50, 50)
 
         self.viewMain = viewMain
         self.viewProduto = ProdutoView(root, self)
 
 
 
-    def newproduto(self, nome, preco, quantidade):
+    def addProduto(self, nome, preco, quantidade):
         self.produtos.append(Produto(nome,preco,quantidade))
 
-    def listprodutos(self):
-        rprodutos = []
+    def listProdutos(self):
+        rProdutos = []
         for produto in self.produtos:
-            rprodutos.append(produto.__str__())
-        return rprodutos
+            rProdutos.append(produto.__str__())
+        return rProdutos
 
 
     def getproduto(self, nome):
@@ -55,24 +55,21 @@ class ProdutoView(tk.Frame):
         self.valor = tk.Entry(self)
         self.valor.pack(side="top", padx = 10, pady = 10)
 
-        self.novo = tk.Button(self, text="Novo", command=self.newproduto())
+        self.novo = tk.Button(self, text="Novo", command=self.addProduto())
         self.novo.pack(side="top", padx = 10, pady = 10)
 
         self.salva = tk.Button(self, text="Salvar", command=self.salvarproduto())
         self.salva.pack(side="top", padx = 10, pady = 10)
 
-        self.listprodutos()
+        self.listProdutos()
 
 
-    def say_hi(self):
-        print("hi there, everyone!")
-
-    def listprodutos(self):
-
-        rprodutos = self.ct.listprodutos()
-        for produto in rprodutos:
+    def listProdutos(self):
+        rProdutos = self.ct.listProdutos()
+        for produto in rProdutos:
             self.lista.insert("end", produto)
-    def newproduto(self):
+
+    def addProduto(self):
         return
     def salvarproduto(self):
         return
