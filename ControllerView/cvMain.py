@@ -1,20 +1,27 @@
 import tkinter as tk
 import ControllerView.cvProduto as viewProduto
+import ControllerView.cvEntrada as viewentrada
+import ControllerView.cvSaida as viewsaida
 
 class Main:
     def __start__(self):
 
         self.rooti = tk.Tk()
+        self.rooti.geometry("300x400")
         self.root = tk.Frame(self.rooti)
 
-        self.root.pack(side="top", fill="both", expand=True)
+        self.root.pack(fill="both", expand=True)
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
+
         self.viewProduto = viewProduto.ProdutoController(self, self.root)
         self.viewMain = MainView(self, self.root)
 
+        self.viewentrada = viewentrada.EntradaController(self, self.root)
+        self.viewsaida = viewsaida.SaidaController(self, self.root)
+
         self.viewMain.tkraise()
-        self.viewMain.master.master.title("Tela Principal")
+        self.rooti.title("Tela Principal")
         self.rooti.mainloop()
 
 
@@ -22,10 +29,23 @@ class Main:
     def toprodutos(self):
 
         self.viewProduto.viewProduto.tkraise()
+        self.viewProduto.viewProduto.listprodutos()
+        self.rooti.title("Tela Produtos")
 
     def tomain(self):
 
         self.viewMain.tkraise()
+        self.rooti.title("Tela Principal")
+
+    def toentrada(self):
+
+        self.viewentrada.viewEntrada.tkraise()
+        self.rooti.title("Tela Entrada")
+
+    def tosaida(self):
+
+        self.viewsaida.viewSaida.tkraise()
+        self.rooti.title("Tela Saída")
 
 
 class MainView(tk.Frame):
@@ -34,27 +54,35 @@ class MainView(tk.Frame):
         tk.Frame.__init__(self,root)
         self.startUI()
         self.ct = ct
-        self.grid( row = 0 , column = 0, sticky = "nsew")
+        self.grid(row=0, column=0 ,sticky = "nsew")
+        self.grid_columnconfigure(0, weight=1)
 
 
 
     def startUI(self):
 
-        botaoProdutos = tk.Button(self, text = "Produtos", command = self.toprodutos , padx = 5 , pady = 5)
-        botaoProdutos.pack(side = "top")
+        titulo = tk.Label(self, text="Controle de Estoque", font=("Helvetica", 18))
+        titulo.grid(row=0, column=0, stick="ew", pady=20)
 
-        botaoEntrada = tk.Button(self, text="Entrada", command=self.toentrada, padx=5, pady=5)
-        botaoEntrada.pack(side="top")
+        subt = tk.Label(self, text="Escolha uma das opções abaixo :")
+        subt.grid(row=1, column=0, sticky="ew")
 
-        botaoSaida = tk.Button(self, text="Saída", command=self.tosaida, padx=5, pady=5)
-        botaoSaida.pack(side="top")
+        botaoProdutos = tk.Button(self, text = "Produtos", command = self.toprodutos)
+        botaoProdutos.grid(row = 2, column = 0, sticky="ew", padx=15, pady=15)
+
+        botaoEntrada = tk.Button(self, text="Entrada", command=self.toentrada)
+        botaoEntrada.grid(row = 3, column = 0, sticky="ew", padx=15, pady=15)
+
+        botaoSaida = tk.Button(self, text="Saída", command=self.tosaida)
+        botaoSaida.grid(row = 4, column = 0, sticky="ew", padx=15, pady=15)
+
 
     def toprodutos(self):
         self.ct.toprodutos()
     def toentrada(self):
-        return
+        self.ct.toentrada()
     def tosaida(self):
-        return
+        self.ct.tosaida()
 
 
 
